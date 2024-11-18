@@ -86,7 +86,7 @@ python-cmd-main
 
 ### 版权说明
 
-该项目签署了MIT 授权许可，详情请参阅 [LICENSE.txt](https://github.com/codecrafter-tl/python-cmd//LICENSE.txt)
+该项目签署了MIT 授权许可，详情请参阅 [LICENSE](https://github.com/codecrafter-tl/python-cmd/blob/master/LICENSE)
 
 [project-path]:codecrafter-tl/python-cmd
 [contributors-shield]: https://img.shields.io/github/contributors/codecrafter-tl/python-cmd.svg?style=square
@@ -98,4 +98,4 @@ python-cmd-main
 [issues-shield]: https://img.shields.io/github/issues/codecrafter-tl/python-cmd.svg?style=square
 [issues-url]: https://img.shields.io/github/issues/codecrafter-tl/python-cmd.svg
 [license-shield]: https://img.shields.io/github/license/codecrafter-tl/python-cmd.svg?style=square
-[license-url]: https://github.com/codecrafter-tl/python-cmd/blob/master/LICENSE.txt
+[license-url]: https://github.com/codecrafter-tl/python-cmd/blob/master/LICENSE
