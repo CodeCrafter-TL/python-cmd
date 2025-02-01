@@ -6,9 +6,9 @@ import subprocess
 import sys
 import time
 from typing import Any
-
+from Logger import *
 from PyQt5 import QtCore, QtWidgets, QtGui
-from PyQt5.QtCore import Qt, QThread, pyqtSignal
+from PyQt5.QtCore import QThread, pyqtSignal, Qt
 from PyQt5.QtWidgets import QMainWindow, QApplication
 
 from constants import *
@@ -97,7 +97,9 @@ class MyMainForm(QMainWindow, Ui_MainWindow):
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
         self.setWindowFlags(Qt.FramelessWindowHint)
         self.thread = thread()
-
+        create_config_file()
+        LoggerUtils.init_logging(self)
+        LoggerUtils.save_log(self, "pcmd start")
         self.text_edit = CustomPlainTextEdit(self.frame)
 
         self.text_edit.setGeometry(QtCore.QRect(0, 50, 1521, 671))
@@ -109,10 +111,7 @@ class MyMainForm(QMainWindow, Ui_MainWindow):
 
         self.print(self.welcome)
         self.print(entry, end="")
-
-        # onea start
         self.text_edit.selectionChanged.connect(self.on_selection_changed)
-        # onea end
 
     def process_command(self, line_text):
         try:
@@ -156,6 +155,10 @@ class MyMainForm(QMainWindow, Ui_MainWindow):
             exit()
 
         self.print(entry, end="")
+
+    def closeEvent(self, event):
+        LoggerUtils.save_log(self, "pcmd end")
+        event.accept()
 
     def print(self, value: tuple[str] | str | list[str] | tuple[Any, ...], sep="", end=""):
         self.text_edit.appendPlainText(sep.join(value) + end)
@@ -301,15 +304,12 @@ help: 查看本消息 - help"""
     def ls(self):
         self.print(os.listdir(path), sep=" ")
 
-    # onea start
-    # bug:选中文本时如果打字会被覆盖
     def on_selection_changed(self):
         # 如果文本编辑框中有选中文本，则禁用输入
         if self.text_edit.textCursor().hasSelection():
             self.text_edit.setReadOnly(True)
         else:
             self.text_edit.setReadOnly(False)
-    # onea end
 
 
 class thread(QThread):

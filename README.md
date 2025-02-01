@@ -25,7 +25,6 @@ A GUI terminal by Python3.
     <a href="https://github.com/codecrafter-tl/python-cmd/pulls">提出拉取请求</a>
   </p>
 
-</p>
 
 ## 目录
 
