@@ -53,6 +53,20 @@ pip3 config set global.index-url https://mirrors.aliyun.com/pypi/simple
 python3 main.py
 ```
 
+#### 日志说明
+日志存放位于`C:\users\你的用户名\.pcmd`下
+#### Warning!
+- 无法自定义日志位置
+- cd 有部分问题 例子：
+```bash
+cd c:\
+unterminated string literal (detected at line 1); perhaps you escaped the end quote? (<string>, line 1)
+```
+请使用
+```bash
+cd c:\\
+```
+
 ### 文件说明
 
 ```

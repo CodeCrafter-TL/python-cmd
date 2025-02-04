@@ -73,6 +73,8 @@ class MyMainForm(QMainWindow, Ui_MainWindow):
     version = CONFIG["version"][0]
     welcome = f"{name} {version}\n{ \
         LICENSE}\nType 'help' to view help information.\n"
+    home_directory = os.path.expanduser("~")
+    print(home_directory)
 
     COMMANDS = {
         "exit": "exit",
@@ -248,7 +250,9 @@ rm: 删除文件 - rm <filename>
 = del
 ls: 列出目录下的文件和目录 - ls
 = dir
-help: 查看本消息 - help"""
+help: 查看本消息 - help
+日志保存位置在{self.home_directory}\.pcmd\下
+"""
         self.print(info)
 
     def cd(self, dir_name='.'):
